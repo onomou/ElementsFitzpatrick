@@ -1,11 +1,32 @@
 #import "../functions.typ": *
 #import "@preview/cetz:0.4.2"
 
+#let fig01(letters) = fig({
+  import cetz.draw: *
+  let r = 2.5
+  let A = (0,0)
+  let B = (r, 0)
+  let C = (angle: 60deg, radius: r)
+  let D = (-r, 0)
+  let E = (2 * r, 0)
+  // lines
+  line(A, B)
+  line(B, C)
+  line(C, A)
+  
+  circle(A, radius: r)
+  circle(B, radius: r)
+  
+  // labels
+  content(A, letters.at("A"), anchor: "east")
+  content(B, letters.at("B"), anchor: "west")
+  content(C, letters.at("C"), anchor: "south")
+  content(D, letters.at("D"), anchor: "west")
+  content(E, letters.at("E"), anchor: "east")
+})
+
 #content-box[
-  #parallel(
-    heading(depth: 2, [Κοιναὶ ἔννοιαι.]),
-    heading(depth: 2, [Proposition 1])
-  )
+  #parallel-heading([Κοιναὶ ἔννοιαι.], [Proposition 1], 2)
   
   #parallel(
     [᾿Επὶ τῆς δοθείσης εὐθείας πεπερασμένης τρίγωνον ἰσόπλευρον συστήσασθαι.],
@@ -20,44 +41,7 @@
     [So it is required to construct an equilateral triangle on the straight-line $A B$.],
   )
 
-  #parallel(
-    align(
-      center, 
-      cetz.canvas({
-        import cetz.draw: *
-        let r = 2
-        set-style(content: (padding: r/10))
-        circle((0,0), radius: r)
-        content((), "Α", anchor: "east")
-        circle((r,0), radius: r)
-        line((0,0), (r,0))
-        content((), "Β", anchor: "west")
-        line((), (rel: (120deg,r)))
-        content((), "Γ", anchor: "south")
-        line((), (rel: (240deg,r)))
-        content((-r, 0), "∆", anchor: "west")
-        content((2 * r, 0), "Ε", anchor: "east")
-      }),
-    ),
-    align(
-      center, 
-      cetz.canvas({
-        import cetz.draw: *
-        let r = 2
-        set-style(content: (padding: r/10))
-        circle((0,0), radius: r)
-        content((), "A", anchor: "east")
-        circle((r,0), radius: r)
-        line((0,0), (r,0))
-        content((), "B", anchor: "west")
-        line((), (rel: (120deg,r)))
-        content((), "C", anchor: "south")
-        line((), (rel: (240deg,r)))
-        content((-r, 0), "D", anchor: "west")
-        content((2 * r, 0), "E", anchor: "east")
-      }),
-    )
-  )
+  #parallel-fig(fig01)
 
   #parallel(
     [Κέντρῳ μὲν τῷ Α διαστήματι δὲ τῷ ΑΒ κύκλος γεγράφθω ὁ ΒΓΔ, καὶ πάλιν κέντρῳ μὲν τῷ Β διαστήματι δὲ τῷ ΒΑ κύκλος γεγράφθω ὁ ΑΓΕ, καὶ ἀπὸ τοῦ Γ σημείου, καθ᾿ ὃ τέμνουσιν ἀλλήλους οἱ κύκλοι, ἐπί τὰ Α, Β σημεῖα ἐπεζεύχθωσαν εὐθεῖαι αἱ ΓΑ, ΓΒ.],

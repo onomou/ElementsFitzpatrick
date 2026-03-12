@@ -1,75 +1,57 @@
 #import "../functions.typ": *
 #import "@preview/cetz:0.4.2"
 
+#let fig04e(letters) = fig({
+  import cetz.draw: *
+  let A = (2, 3)
+  let B = (0,0)
+  let C = (3,0)
+  let off = (4.5, 0)
+  let D = cetz.vector.add((A), off)
+  let E = cetz.vector.add((B), off)
+  let F = cetz.vector.add((C), off)
+  line(A, B)
+  line(B, C)
+  line(C, A)
+  line(D, E)
+  line(E, F)
+  line(F, D)
+  let mid-arc = cetz.vector.add(cetz.vector.lerp(E, F, 0.5), (0, -0.5))
+  arc-through(E, mid-arc, F)
+  
+  // labels
+  content(A, letters.at("A"), anchor: "south")
+  content(B, letters.at("B"), anchor: "east")
+  content(C, letters.at("C"), anchor: "west")
+  content(D, letters.at("D"), anchor: "south")
+  content(E, letters.at("E"), anchor: "east")
+  content(F, letters.at("F"), anchor: "west")
+})
+
 #content-box[
+  #parallel-heading([δʹ.], [Proposition 4], 2)
+  
   #parallel(
-    [],
-    [],
+    [᾿Εὰν δύο τρίγωνα τὰς δύο πλευρὰς [ταῖς] δυσὶ πλευραῖς ἴσας ἔχῃ ἑκατέραν ἑκατέρᾳ καὶ τὴν γωνίαν τῇ γωνίᾳ ἴσην ἔχῃ τὴν ὑπὸ τῶν ἴσων εὐθειῶν περιεχομένην, καὶ τὴν βάσιν τῂ βάσει ἴσην ἕξει, καὶ τὸ τρίγωνον τῷ τριγώνῳ ἴσον ἔσται, καὶ αἱ λοιπαὶ γωνίαι ταῖς λοιπαῖς γωνίαις ἴσαι ἔσονται ἑκατέρα ἑκατέρᾳ, ὑφ᾿ ἃς αἱ ἴσαι πλευραὶ ὑποτείνουσιν.
+    ],
+    [If two triangles have two  sides equal to two sides, respectively, and have the angle(s) enclosed by the equal straight-lines equal, (then) they will also have the base equal to the base, and the triangle will be equal to the triangle,  and the remaining angles subtended by the equal sides will be equal to the corresponding remaining angles.],
+  )
+  
+  #parallel-fig(fig04e)
+  
+  #parallel(
+    [῎Εστω δύο τρίγωνα τὰ ΑΒΓ, ΔΕΖ τὰς δύο πλευρὰς τὰς ΑΒ, ΑΓ ταῖς δυσὶ πλευραῖς ταῖς ΔΕ, ΔΖ ἴσας ἔχοντα ἑκατέραν ἑκατέρᾳ τὴν μὲν ΑΒ τῇ ΔΕ τὴν δὲ ΑΓ τῇ ΔΖ καὶ γωνίαν τὴν ὑπὸ ΒΑΓ γωνίᾳ τῇ ὑπὸ ΕΔΖ ἴσην. λέγω, ὅτι καὶ βάσις ἡ ΒΓ βάσει τῇ ΕΖ ἴση ἐστίν, καὶ τὸ ΑΒΓ τρίγωνον τῷ ΔΕΖ τριγώνῳ ἴσον ἔσται, καὶ αἱ λοιπαὶ γωνίαι ταῖς λοιπαῖς γωνίαις ἴσαι ἔσονται ἑκατέρα ἑκατέρᾳ, ὑφ᾿ ἃς αἱ ἴσαι πλευραὶ ὑποτείνουσιν, ἡ μὲν ὑπὸ ΑΒΓ τῇ ὑπὸ ΔΕΖ, ἡ δὲ ὑπὸ ΑΓΒ τῇ ὑπὸ ΔΖΕ.
+    ],
+    [Let $A B C$ and $D E F$ be  two triangles having the two sides $A B$ and $A C$ equal to the two sides $D E$ and $D F$, respectively. (That is) $A B$ to $D E$, and $A C$ to $D F$. And (let) the angle $B A C$ (be) equal to the angle $E D F$. I say that the base $B C$ is also equal to the base $E F$, and  triangle $A B C$ will be equal to triangle $D E F$, and the remaining angles subtended by the equal sides will be equal to the corresponding remaining angles. (That is) $A B C$ to $D E F$, and $A C B$ to $D F E$.]
+  )
+  
+  #parallel(
+    [᾿Εφαρμοζομένου γὰρ τοῦ ΑΒΓ τριγώνου ἐπὶ τὸ ΔΕΖ τρίγωνον καὶ τιθεμένου τοῦ μὲν Α σημείου ἐπὶ τὸ Δ σημεῖον τῆς δὲ ΑΒ εὐθείας ἐπὶ τὴν ΔΕ, ἐφαρμόσει καὶ τὸ Β σημεῖον ἐπὶ τὸ Ε διὰ τὸ ἴσην ε᾿ῖναι τὴν ΑΒ τῇ ΔΕ· ἐφαρμοσάσης δὴ τῆς ΑΒ ἐπὶ τὴν ΔΕ ἐφαρμόσει καὶ ἡ ΑΓ εὐθεῖα ἐπὶ τὴν ΔΖ διὰ τὸ ἴσην ε᾿ῖναι τὴν ὑπὸ ΒΑΓ γωνίαν τῇ ὑπὸ ΕΔΖ· ὥστε καὶ τὸ Γ σημεῖον ἐπὶ τὸ Ζ σημεῖον ἐφαρμόσει διὰ τὸ ἴσην πάλιν ε᾿ῖναι τὴν ΑΓ τῇ ΔΖ. ἀλλὰ μὴν καὶ τὸ Β ἐπὶ τὸ Ε ἐφηρμόκει· ὥστε βάσις ἡ ΒΓ ἐπὶ βάσιν τὴν ΕΖ ἐφαρμόσει. εἰ γὰρ τοῦ μὲν Β ἐπὶ τὸ Ε ἐφαρμόσαντος τοῦ δὲ Γ ἐπὶ τὸ Ζ ἡ ΒΓ βάσις ἐπὶ τὴν ΕΖ οὐκ ἐφαρμόσει, δύο εὐθεῖαι χωρίον περιέξουσιν· ὅπερ ἐστὶν ἀδύνατον. ἐφαρμόσει ἄρα ἡ ΒΓ βάσις ἐπὶ τὴν ΕΖ καὶ ἴση αὐτῇ ἔσται· ὥστε καὶ ὅλον τὸ ΑΒΓ τρίγωνον ἐπὶ ὅλον τὸ ΔΕΖ τρίγωνον ἐφαρμόσει καὶ ἴσον αὐτῷ ἔσται, καὶ αἱ λοιπαὶ γωνίαι ἐπὶ τὰς λοιπὰς γωνίας ἐφαρμόσουσι καὶ ἴσαι αὐταῖς ἔσονται, ἡ μὲν ὑπὸ ΑΒΓ τῇ ὑπὸ ΔΕΖ ἡ δὲ ὑπὸ ΑΓΒ τῇ ὑπὸ ΔΖΕ.],
+    [For if triangle $A B C$ is applied to triangle $D E F$,#content-box-note([The application of one figure to another should be counted as an additional postulate.]) the point $A$ being placed on the point $D$, and the straight-line $A B$ on $D E$, (then) the point $B$ will also coincide with $E$, on account of $A B$ being equal to $D E$. So (because of) $A B$ coinciding with $D E$, the straight-line $A C$ will also coincide with $D F$, on account of the angle $B A C$ being equal to $E D F$. So the point $C$ will also coincide with the point $F$,  again on account of $A C$ being equal to $D F$.  But,  point $B$  certainly also coincided with point $E$, so that the base $B C$ will coincide with the base $E F$. For if $B$ coincides with $E$, and $C$ with $F$, and the base $B C$ does not coincide with $E F$, (then) two straight-lines will encompass an area. The very thing is impossible [Post. 1].#content-box-note([Since Post. 1 implicitly assumes that the straight-line joining two given points is unique.]) Thus, the base $B C$ will coincide with $E F$, and will be equal to it [C.N. 4]. So  the whole triangle $A B C$ will coincide with the whole triangle $D E F$, and will be equal to it [C.N. 4]. And the remaining angles will coincide with the remaining angles, and  will be equal to them [C.N. 4]. (That is) $A B C$ to $D E F$, and $A C B$ to $D F E$ [C.N. 4].]
+  )
+  
+  #parallel(
+    [᾿Εὰν ἄρα δύο τρίγωνα τὰς δύο πλευρὰς [ταῖς] δύο πλευραῖς ἴσας ἔχῃ ἑκατέραν ἑκατέρᾳ καὶ τὴν γωνίαν τῇ γωνίᾳ ἴσην ἔχῃ τὴν ὑπὸ τῶν ἴσων εὐθειῶν περιεχομένην, καὶ τὴν βάσιν τῂ βάσει ἴσην ἕξει, καὶ τὸ τρίγωνον τῷ τριγώνῳ ἴσον ἔσται, καὶ αἱ λοιπαὶ γωνίαι ταῖς λοιπαῖς γωνίαις ἴσαι ἔσονται ἑκατέρα ἑκατέρᾳ, ὑφ᾿ ἃς αἱ ἴσαι πλευραὶ ὑποτείνουσιν· ὅπερ ἔδει δεῖξαι.],
+    [Thus, if two triangles have two  sides equal to two sides, respectively, and have the angle(s) enclosed by the equal straight-lines equal, (then) they will also have the base equal to the base, and the triangle will be equal to the triangle,  and the remaining angles subtended by the equal sides will be equal to the corresponding remaining angles. (Which is) the very thing it was required to show.]
   )
 ]
-
-/* 
-
-%%%%%%
-% Prop 1.4
-%%%%%%
-\pdfbookmark[1]{Proposition 1.4}{pdf1.4}
-\begin{Parallel}{}{} 
-\ParallelLText{
-\begin{center}
-{\large \ggn{4}.}
-\end{center}\vspace*{-7pt}
-
-\gr{>E`an d'uo tr'igwna t`ac d'uo pleur`ac [ta~ic] dus`i pleura~ic >'isac >'eqh| <ekat'eran <ekat'era| ka`i t`hn gwn'ian t~h| gwn'ia| >'ishn >'eqh| t`hn <up`o t~wn >'iswn e>ujei~wn perieqom'enhn, ka`i t`hn b'asin t`h| b'asei >'ishn <'exei, ka`i t`o tr'igwnon t~w| trig'wnw| >'ison >'estai, ka`i a<i loipa`i gwn'iai ta~ic loipa~ic gwn'iaic >'isai >'esontai <ekat'era <ekat'era|, <uf> <`ac a<i
->'isai pleura`i <upote'inousin.}
-
-\epsfysize=1.35in
-\centerline{\epsffile{Book01/fig04g.eps}}
-
-\gr{>'Estw d'uo tr'igwna t`a ABG, DEZ t`ac d'uo pleur`ac t`ac AB, AG ta~ic dus`i pleura~ic ta~ic DE, DZ >'isac >'eqonta <ekat'eran <ekat'era| t`hn m`en AB t~h| DE t`hn d`e AG t~h| DZ ka`i gwn'ian t`hn <up`o BAG gwn'ia| t~h| <up`o EDZ >'ishn. l'egw, <'oti ka`i b'asic <h BG b'asei t~h| EZ >'ish >est'in, ka`i t`o ABG tr'igwnon t~w| DEZ trig'wnw| >'ison >'estai, 
-ka`i a<i loipa`i gwn'iai ta~ic loipa~ic gwn'iaic >'isai >'esontai <ekat'era <ekat'era|, <uf> <`ac a<i >'isai pleura`i <upote'inousin, <h m`en <up`o ABG t~h| <up`o DEZ, <h d`e <up`o AGB t~h| <up`o DZE.}
-
-\gr{>Efarmozom'enou g`ar to~u ABG trig'wnou >ep`i t`o DEZ tr'igwnon ka`i tijem'enou to~u m`en A shme'iou >ep`i t`o D shme~ion t~hc d`e AB e>uje'iac >ep`i t`hn DE, >efarm'osei ka`i t`o B shme~ion >ep`i t`o E di`a t`o >'ishn e>~inai t`hn AB t~h| DE; >efarmos'ashc d`h t~hc AB >ep`i t`hn DE >efarm'osei ka`i <h AG e>uje~ia >ep`i t`hn DZ di`a t`o >'ishn e>~inai t`hn <up`o BAG gwn'ian t~h| <up`o EDZ; <'wste ka`i t`o G shme~ion >ep`i t`o Z shme~ion >efarm'osei di`a t`o >'ishn p'alin e>~inai t`hn AG t~h| DZ. >all`a m\kern -.7pt `hn ka`i t`o B >ep`i t`o E >efhrm'okei; <'wste b'asic <h BG >ep`i b'asin t`hn EZ >efarm'osei. e>i g`ar to~u m`en B >ep`i t`o E >efarm'osantoc to~u d`e G >ep`i t`o Z <h BG b'asic >ep`i t`hn EZ o>uk >efarm'osei, d'uo e>uje~iai qwr'ion peri'exousin; <'oper >est`in >ad'unaton. >efarm'osei >'ara <h BG b'asic >ep`i t`hn EZ ka`i >'ish a\kern -.7pt >ut~h| >'estai; <'wste ka`i <'olon t`o ABG 
-tr'igwnon >ep`i <'olon t`o DEZ tr'igwnon >efarm'osei ka`i >'ison a\kern -.7pt >ut~w| >'estai, ka`i
-a<i loipa`i gwn'iai >ep`i t`ac loip`ac gwn'iac >efarm'osousi ka`i >'isai a\kern -.7pt >uta~ic >'esontai, <h m`en <up`o ABG t~h| <up`o DEZ <h d`e <up`o AGB t~h| <up`o DZE.}
-
-\gr{>E`an >'ara d'uo tr'igwna t`ac d'uo pleur`ac [ta~ic] d'uo pleura~ic >'isac >'eqh| <ekat'eran <ekat'era| ka`i t`hn gwn'ian t~h| gwn'ia| >'ishn >'eqh| t`hn <up`o t~wn >'iswn e>ujei~wn perieqom'enhn, ka`i t`hn b'asin t`h| b'asei >'ishn <'exei, ka`i t`o tr'igwnon t~w| trig'wnw| >'ison >'estai, ka`i a<i loipa`i gwn'iai ta~ic loipa~ic gwn'iaic >'isai >'esontai <ekat'era <ekat'era|, <uf> <`ac a<i
->'isai pleura`i <upote'inousin; <'oper >'edei de~ixai.}}
-
-\ParallelRText{
-\begin{center}
-{\large Proposition 4}
-\end{center}
-
-If two triangles have two  sides equal to two sides, respectively, and have the
-angle(s) enclosed by the equal straight-lines equal, (then)
-they will also have the base equal to the base, and the triangle will be equal
-to the triangle,  and
-the remaining angles subtended by the equal sides will be equal to the corresponding remaining angles.
-
-\epsfysize=1.35in
-\centerline{\epsffile{Book01/fig04e.eps}}
-
-Let $ABC$ and $DEF$ be  two triangles having the two sides $AB$ and $AC$ equal to the two sides $DE$ and $DF$, respectively. (That is) $AB$ to $DE$, and $AC$ to $DF$. And (let) the angle $BAC$ (be) equal to the angle $EDF$. I say that the base $BC$ is also equal to the base
-$EF$, and  triangle $ABC$ will be equal to triangle $DEF$, and the remaining angles
-subtended by the equal sides will be equal to the corresponding remaining angles. (That is) $ABC$ to $DEF$, and $ACB$ to
-$DFE$.
-
-For if triangle $ABC$ is applied to triangle $DEF$,$^\dag$ the point $A$ being placed
-on the point $D$, and the straight-line $AB$ on $DE$, (then) the point $B$ will also coincide with $E$, on account of $AB$ being equal to $DE$. So (because of) $AB$ coinciding with $DE$, the straight-line $AC$ will also coincide with $DF$, on account of the angle $BAC$ being equal to $EDF$. So the point $C$ will also coincide with the
-point $F$,  again on account of $AC$ being equal to $DF$.  But,  point $B$  certainly also coincided with point $E$, so that the base $BC$ will coincide with the base $EF$.
-For if $B$ coincides with $E$, and $C$ with $F$, and the base $BC$ does not coincide with $EF$, (then) two straight-lines will encompass an area. The very thing is impossible [Post. 1].$^\ddag$ Thus, the base $BC$ will coincide with $EF$, and will be equal to it [C.N. 4]. So  the whole triangle $ABC$ will coincide with the whole triangle $DEF$, and will be equal to it [C.N. 4]. And the remaining angles will coincide with the remaining angles, and  will be equal to them [C.N. 4]. (That is) $ABC$ to $DEF$, and $ACB$
-to $DFE$ [C.N. 4].
-
-Thus, if two triangles have two  sides equal to two sides, respectively, and have the
-angle(s) enclosed by the equal straight-lines equal, (then)
-they will also have the base equal to the base, and the triangle will be equal
-to the triangle,  and
-the remaining angles subtended by the equal sides will be equal to the
-corresponding remaining angles. (Which is) the very thing it was required to show.}
-\end{Parallel}
-{\footnotesize
-\noindent $^\dag$ The application of one figure to another should be counted as an additional postulate.\\[0.5ex]
-$^\ddag$ Since Post. 1 implicitly assumes that the straight-line
-joining two given points is unique.}
- */

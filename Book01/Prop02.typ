@@ -1,75 +1,74 @@
 #import "../functions.typ": *
 #import "@preview/cetz:0.4.2"
 
-#let fig02(letters) = {
-  cetz.canvas({
-    import cetz.draw: *
-    let ang = 0deg
-    let ang = 38deg
-    rotate(z: ang)
+#let fig02(letters) = fig({
+  import cetz.draw: *
+  let ang = 0deg
+  let ang = 38deg
+  rotate(z: ang)
 
-    // variables
-    let BC = 3
-    let r2 = 2
-    let s = 5.5
-    let t = 2
-    let A = (0,0)
-    let B = (1,0)
-    let AB = cetz.vector.dist(A, B)
-    let C = (BC, 0)
-    C = cetz.vector.rotate-z(C, -ang + 90deg)
-    C = cetz.vector.add(B, C)
-    // let C = cetz.vector.sub((2,3), (0,1))
-    // let C = cetz.vector.sub((2,3), Cdir)
-    // let C = cetz.vector.add(C, C)
-    let D = cetz.vector.sub(B, A)
-    D = cetz.vector.rotate-z(D, 60deg)
-    // let E = (D, s, A)
-    let E = cetz.vector.lerp(D, A, s)
-    // let F = (D, s, B)
-    let F = cetz.vector.lerp(D, B, s)
-    let BD = cetz.vector.sub(D, B)
-    let G = cetz.vector.lerp(D, B, AB + BC / AB)
-    // content((0,3), [#BC / #AB = #(BC / AB)])
-    let DG = cetz.vector.len(cetz.vector.sub(G, D))
-    let L = cetz.vector.lerp(D, A, t)
-    // let G = cetz.vector.element-product(BD, cetz.vector.len(BD))
-    // let H = cetz.vector.as-vec(G, init: (0,0))
-    // let H = cetz.vector.as-vec(G)
-    // let BC = cetz.vector.sub(C, B)
-    // let BG = cetz.vector.sub(G, B)
-    // let DG = cetz.vector.sub(H, D)
-    
-    // styles
-    set-style(content: (padding: BC/10))
-    
-    // circles
-    circle(B, radius: BC)
-    circle(D, radius: DG)
+  // variables
+  let BC = 3
+  let r2 = 2
+  let s = 5.5
+  let t = 2
+  let A = (0,0)
+  let B = (1,0)
+  let AB = cetz.vector.dist(A, B)
+  let C = (BC, 0)
+  C = cetz.vector.rotate-z(C, -ang + 90deg)
+  C = cetz.vector.add(B, C)
+  // let C = cetz.vector.sub((2,3), (0,1))
+  // let C = cetz.vector.sub((2,3), Cdir)
+  // let C = cetz.vector.add(C, C)
+  let D = cetz.vector.sub(B, A)
+  D = cetz.vector.rotate-z(D, 60deg)
+  // let E = (D, s, A)
+  let E = cetz.vector.lerp(D, A, s)
+  // let F = (D, s, B)
+  let F = cetz.vector.lerp(D, B, s)
+  let BD = cetz.vector.sub(D, B)
+  let G = cetz.vector.lerp(D, B, AB + BC / AB)
+  // content((0,3), [#BC / #AB = #(BC / AB)])
+  let DG = cetz.vector.len(cetz.vector.sub(G, D))
+  let L = cetz.vector.lerp(D, A, t)
+  // let G = cetz.vector.element-product(BD, cetz.vector.len(BD))
+  // let H = cetz.vector.as-vec(G, init: (0,0))
+  // let H = cetz.vector.as-vec(G)
+  // let BC = cetz.vector.sub(C, B)
+  // let BG = cetz.vector.sub(G, B)
+  // let DG = cetz.vector.sub(H, D)
+  
+  // styles
+  // set-style(content: (padding: BC/10))
+  
+  // circles
+  circle(B, radius: BC)
+  circle(D, radius: DG)
 
-    // lines
-    line(A, B)
-    line(B, C)
-    line(B, D)
-    line(D, E)
-    line(D, F)
+  // lines
+  line(A, B)
+  line(B, C)
+  line(B, D)
+  line(D, E)
+  line(D, F)
 
-    // labels
-    content(A, letters.at("A"), anchor: "west")
-    content(B, letters.at("B"), anchor: "base-west")
-    content(C, letters.at("C"), anchor: "south")
-    content(D, letters.at("D"), anchor: "south-east")
-    content(E, letters.at("E"), anchor: "west")
-    content(F, letters.at("F"), anchor: "west")
-    content(G, letters.at("G"), anchor: "base-west")
-    content(L, letters.at("L"), anchor: "north-east")
-  })
-}
+  // labels
+  content(A, letters.at("A"), anchor: "west")
+  content(B, letters.at("B"), anchor: "base-west")
+  content(C, letters.at("C"), anchor: "south")
+  content(D, letters.at("D"), anchor: "south-east")
+  content(E, letters.at("E"), anchor: "west")
+  content(F, letters.at("F"), anchor: "west")
+  content(G, letters.at("G"), anchor: "base-west")
+  content(L, letters.at("L"), anchor: "north-east")
+})
 
 #content-box[
-  #parallel(
+  #parallel-heading(
     [#heading(depth: 2, "βʹ.")],
     [#heading(depth: 2, [Proposition 2#content-box-note[This proposition admits of a number of different cases, depending on the relative positions of the point $A$ and the line $B C$. In such situations, Euclid invariably only considers one particular case---usually, the most difficult---and leaves the remaining cases as exercises for the reader.]])],
+    2
   )
   
   #parallel(
@@ -88,18 +87,7 @@
   )
   
 
-  #parallel-fig(fig02, letters: (
-    A: ("Α", "A"), 
-    B: ("Β", "B"), 
-    C: ("Γ", "C"), 
-    D: ("∆", "D"), 
-    E: ("Ε", "E"), 
-    F: ("Ζ", "F"),
-    G: ("Η", "G"),
-    H: ("Θ", "H"),
-    K: ("Κ", "K"),
-    L: ("Λ", "L"),
-  ))
+  #parallel-fig(fig02)
 
   #parallel(
     [᾿Επεὶ ο᾿ῦν τὸ Β σημεῖον κέντρον ἐστὶ τοῦ ΓΗΘ, ἴση ἐστὶν ἡ ΒΓ τῇ ΒΗ. πάλιν, ἐπεὶ τὸ Δ σημεῖον κέντρον ἐστὶ τοῦ ΗΚΛ κύκλου, ἴση ἐστὶν ἡ ΔΛ τῇ ΔΗ, ῾ῶν ἡ ΔΑ τῇ ΔΒ ἴση ἐστίν. λοιπὴ ἄρα ἡ ΑΛ λοιπῇ τῇ ΒΗ ἐστιν ἴση. ἐδείχθη δὲ καὶ ἡ ΒΓ τῇ ΒΗ ἴση· ἑκατέρα ἄρα τῶν ΑΛ, ΒΓ τῇ ΒΗ ἐστιν ἴση. τὰ δὲ τῷ αὐτῷ ἴσα καὶ ἀλλήλοις ἐστὶν ἴσα· καὶ ἡ ΑΛ ἄρα τῇ ΒΓ ἐστιν ἴση.],
