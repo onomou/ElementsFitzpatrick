@@ -4,7 +4,7 @@
 // https://forum.typst.app/t/how-to-get-a-footer-with-alternating-alignment-and-custom-text-per-page/3749/10
 #let footer-text = state("footer-text")
 #let set-footer-text(content) = footer-text.update(content)
-#let nofooter() = set-footer-text([])
+#let no-footer() = set-footer-text([])
 
 #let greek-map = (
   A: ("Α", "A"), 

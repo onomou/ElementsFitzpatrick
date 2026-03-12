@@ -1,7 +1,7 @@
 // for /l %x in (10, 1, 20) do copy Prop08.typ Prop%x.typ
 // \$([a-z]+)([a-z]) -> $$$1 $2
 
-#import "../functions.typ": parallel, nofooter, chapter, content-box, content-box-note, parallel-fig
+#import "../functions.typ": parallel, no-footer, chapter, content-box, content-box-note, parallel-fig
 #import "@preview/cetz:0.4.2"
 
 
@@ -11,16 +11,17 @@
 
 // Greek and English text last checked 13/03/2013
 
-#nofooter()
+#no-footer()
 
 #pagebreak()
 
 #set page(
-  header: grid(
+  header: [#grid(
     columns: (1fr, 1fr),
     align: (left, right),
     [ΣΤΟΙΧΕΙΩΝ αʹ.], [ELEMENTS BOOK 1]
   )
+  #line(length: 100%, stroke: 0.85pt)]
 )
 
 #include "Definitions.typ"

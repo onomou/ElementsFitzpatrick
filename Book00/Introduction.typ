@@ -1,4 +1,4 @@
-#import "../functions.typ": parallel, nofooter, set-footer-text
+#import "../functions.typ": parallel, no-footer, set-footer-text
 
 // TITLEPAGE
 
@@ -6,7 +6,7 @@
 #set document(title: [EUCLID'S ELEMENTS OF GEOMETRY])
 #show title: set text(size: 24pt)
 
-#nofooter()
+#no-footer()
 
 
 #align(
@@ -31,7 +31,7 @@
 
 #pagebreak()
 
-#nofooter()
+#no-footer()
 
 // COPYRIGHT PAGE
 #set align(left)

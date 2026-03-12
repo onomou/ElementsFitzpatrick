@@ -1,4 +1,4 @@
-#import "../functions.typ": parallel, nofooter, chapter, content-box, content-box-note
+#import "../functions.typ": parallel, no-footer, chapter, content-box, content-box-note
 #content-box[
   #chapter(
     [Postulates],

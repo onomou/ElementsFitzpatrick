@@ -66,8 +66,8 @@
 
 #content-box[
   #parallel-heading(
-    [#heading(depth: 2, "βʹ.")],
-    [#heading(depth: 2, [Proposition 2#content-box-note[This proposition admits of a number of different cases, depending on the relative positions of the point $A$ and the line $B C$. In such situations, Euclid invariably only considers one particular case---usually, the most difficult---and leaves the remaining cases as exercises for the reader.]])],
+    ["βʹ."],
+    [Proposition 2#content-box-note[This proposition admits of a number of different cases, depending on the relative positions of the point $A$ and the line $B C$. In such situations, Euclid invariably only considers one particular case---usually, the most difficult---and leaves the remaining cases as exercises for the reader.]],
     2
   )
   
