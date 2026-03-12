@@ -20,6 +20,26 @@
   )
 )
 
+#let split-dict(dict, n) = {
+  let result = (:)
+  for (key, alts) in dict {
+    result.insert(key, alts.at(n))
+  }
+  return result
+}
+
+#let parallel-fig(the_fig, letters: ()) = {
+  parallel(
+    align(
+      center, 
+      the_fig(split-dict(letters, 0))
+    ),
+    align(
+      center, 
+      the_fig(split-dict(letters, 1))
+    )
+  )
+}
 
 // https://github.com/typst/typst/issues/1889#issuecomment-2401334041
 #let chapter(alt, body, depth: 1) = {
@@ -37,7 +57,7 @@
   {
     body
     parbreak()
-    set text(size: 10pt)
+    set text(size: 9pt)
     set par(first-line-indent: 0em)
     
     context for (i, e) in notes.get().enumerate() {

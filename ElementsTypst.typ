@@ -15,7 +15,9 @@
     // )
     text = if text != none {text} else {page-num}
     align(center, emph[#text])
-  }
+  },
+  paper: "us-letter",
+  margin: (inside: 10pt, outside: 15pt),
 )
 
 #set par(
