@@ -26,7 +26,7 @@
 })
 
 #content-box[
-  #parallel-heading([Κοιναὶ ἔννοιαι.], [Proposition 1], 2)
+  #parallel-proposition(1)
   
   #parallel(
     [᾿Επὶ τῆς δοθείσης εὐθείας πεπερασμένης τρίγωνον ἰσόπλευρον συστήσασθαι.],

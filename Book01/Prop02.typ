@@ -18,26 +18,14 @@
   let C = (BC, 0)
   C = cetz.vector.rotate-z(C, -ang + 90deg)
   C = cetz.vector.add(B, C)
-  // let C = cetz.vector.sub((2,3), (0,1))
-  // let C = cetz.vector.sub((2,3), Cdir)
-  // let C = cetz.vector.add(C, C)
   let D = cetz.vector.sub(B, A)
   D = cetz.vector.rotate-z(D, 60deg)
-  // let E = (D, s, A)
   let E = cetz.vector.lerp(D, A, s)
-  // let F = (D, s, B)
   let F = cetz.vector.lerp(D, B, s)
   let BD = cetz.vector.sub(D, B)
   let G = cetz.vector.lerp(D, B, AB + BC / AB)
-  // content((0,3), [#BC / #AB = #(BC / AB)])
   let DG = cetz.vector.len(cetz.vector.sub(G, D))
   let L = cetz.vector.lerp(D, A, t)
-  // let G = cetz.vector.element-product(BD, cetz.vector.len(BD))
-  // let H = cetz.vector.as-vec(G, init: (0,0))
-  // let H = cetz.vector.as-vec(G)
-  // let BC = cetz.vector.sub(C, B)
-  // let BG = cetz.vector.sub(G, B)
-  // let DG = cetz.vector.sub(H, D)
   
   // styles
   // set-style(content: (padding: BC/10))
@@ -65,11 +53,7 @@
 })
 
 #content-box[
-  #parallel-heading(
-    ["βʹ."],
-    [Proposition 2#content-box-note[This proposition admits of a number of different cases, depending on the relative positions of the point $A$ and the line $B C$. In such situations, Euclid invariably only considers one particular case---usually, the most difficult---and leaves the remaining cases as exercises for the reader.]],
-    2
-  )
+  #parallel-proposition(492, note: [This proposition admits of a number of different cases, depending on the relative positions of the point $A$ and the line $B C$. In such situations, Euclid invariably only considers one particular case---usually, the most difficult---and leaves the remaining cases as exercises for the reader.])
   
   #parallel(
     [Πρὸς τῷ δοθέντι σημείῳ τῇ δοθείσῃ εὐθείᾳ ἴσην εὐθεῖαν θέσθαι.],

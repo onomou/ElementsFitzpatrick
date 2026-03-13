@@ -29,7 +29,7 @@
 })
 
 #content-box[
-  #parallel-heading(["γʹ."], [Proposition 3], 2)
+  #parallel-proposition(3)
 
   #parallel(
     [Δύο δοθεισῶν εὐθειῶν ἀνίσων ἀπὸ τῆς μείζονος τῇ ἐλάσσονι ἴσην εὐθεῖαν ἀφελεῖν.],

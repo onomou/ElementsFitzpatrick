@@ -6,62 +6,6 @@
 #let set-footer-text(content) = footer-text.update(content)
 #let no-footer() = set-footer-text([])
 
-#let greek-map = (
-  A: ("Α", "A"), 
-  B: ("Β", "B"), 
-  C: ("Γ", "C"), 
-  D: ("∆", "D"), 
-  E: ("Ε", "E"), 
-  F: ("Ζ", "F"),
-  G: ("Η", "G"),
-  H: ("Θ", "H"),
-  K: ("Κ", "K"),
-  L: ("Λ", "L"),
-)
-
-#let parallel(a, b, n: none) = (
-  grid(
-    columns: (1fr, 1fr),
-    gutter: 1em,
-    if n != none {
-      [#enum(numbering: "αʹ.", start: n, [#a])]
-    } else {a},
-    if n != none {
-      [#enum(numbering: "1.", start: n, [#b])]
-    } else {b},
-    
-    // [#if n != none {numbering("1.", n)} #b],
-  )
-)
-
-#let parallel-heading(left, right, depth) = (
-  parallel(
-    [#heading(depth: depth, left)],
-    [#heading(depth: depth, right)],
-  )
-)
-
-#let split-dict(dict, n) = {
-  let result = (:)
-  for (key, alts) in dict {
-    result.insert(key, alts.at(n))
-  }
-  return result
-}
-
-#let parallel-fig(the_fig, letters: greek-map) = {
-  parallel(
-    align(
-      center, 
-      the_fig(split-dict(letters, 0))
-    ),
-    align(
-      center, 
-      the_fig(split-dict(letters, 1))
-    )
-  )
-}
-
 // https://github.com/typst/typst/issues/1889#issuecomment-2401334041
 #let chapter(alt, body, depth: 1) = {
   heading(outlined: false, body, depth: depth)
@@ -102,3 +46,66 @@
     body
   })
 )
+
+#let greek-map = (
+  A: ("Α", "A"), 
+  B: ("Β", "B"), 
+  C: ("Γ", "C"), 
+  D: ("∆", "D"), 
+  E: ("Ε", "E"), 
+  F: ("Ζ", "F"),
+  G: ("Η", "G"),
+  H: ("Θ", "H"),
+  K: ("Κ", "K"),
+  L: ("Λ", "L"),
+)
+
+#let parallel(a, b, n: none) = (
+  grid(
+    columns: (1fr, 1fr),
+    gutter: 1em,
+    if n != none {
+      [#enum(numbering: "αʹ.", start: n, [#a])]
+    } else {a},
+    if n != none {
+      [#enum(numbering: "1.", start: n, [#b])]
+    } else {b},
+    
+    // [#if n != none {numbering("1.", n)} #b],
+  )
+)
+
+#let parallel-heading(left, right, depth) = (
+  parallel(
+    [#heading(depth: depth, left)],
+    [#heading(depth: depth, right)],
+  )
+)
+
+#let parallel-proposition(n, note: none) = (
+  parallel(
+    [#heading(depth: 2, outlined: false, [#enum(numbering: "αʹ.", start: n, [])])],
+    [#heading(depth: 2, [Proposition #n#if note != none {content-box-note[#note]}])],
+  )
+)
+
+#let split-dict(dict, n) = {
+  let result = (:)
+  for (key, alts) in dict {
+    result.insert(key, alts.at(n))
+  }
+  return result
+}
+
+#let parallel-fig(the_fig, letters: greek-map) = {
+  parallel(
+    align(
+      center, 
+      the_fig(split-dict(letters, 0))
+    ),
+    align(
+      center, 
+      the_fig(split-dict(letters, 1))
+    )
+  )
+}

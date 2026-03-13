@@ -1,7 +1,9 @@
-# Typst
+# Euclid's Elements
 
-This is a simple rewrite of Richard Fitzpatrick's LaTeX rendering
-of Euclid's Elements. Each book and proposition is split into
+## Typst
+
+This is a simple rewrite of Euclid's Elements from Richard
+Fitzpatrick's LaTeX repo. Each book and proposition is split into
 its own file, with helper functions in `/functions.typ` to
 provide for consistent styles throughout. The layout is not
 exactly the same as Fitzpatrick's -- the different typesetting
@@ -36,7 +38,16 @@ in the base directory (containing `ElementsTypst.typ`).
 
 ## Some Notes
 
+Greek text is in Unicode, copied directly from the LaTeX PDF.
+It appears to be correct, but I do not fluently read Greek and
+have not taken the time to verify each character. Hyphenation
+has been removed.
+
+Greek text does not implement kerning indicated in the LaTeX source.
+
 Greek text is not italicized. This may be changed later.
+
+Paragraph spacing is wider than the original.
 
 CeTZ does not currently (0.4.2) handle alternate coordinates well. 
 To use a radius-angle coordinate, do `#let A = (radius, 0)` then 
