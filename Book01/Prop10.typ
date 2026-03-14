@@ -2,7 +2,24 @@
 #import "@preview/cetz:0.4.2"
 
 #let fig10(letters) = fig({
+  import cetz.draw: *
+  let r = 3
+  let A = (0, 0)
+  let B = (r, 0)
+  let C = cetz.vector.rotate-z(B, 60deg)
+  let D = cetz.vector.lerp(A, B, 0.5)
   
+  // lines
+  line(A, B)
+  line(A, C)
+  line(B, C)
+  line(C, D)
+
+  // labels
+  content(A, letters.at("A"), anchor: "east")
+  content(B, letters.at("B"), anchor: "west")
+  content(C, letters.at("C"), anchor: "south")
+  content(D, letters.at("D"), anchor: "north")
 })
 
 #content-box[

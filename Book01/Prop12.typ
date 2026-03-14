@@ -2,7 +2,38 @@
 #import "@preview/cetz:0.4.2"
 
 #let fig12(letters) = fig({
-  
+  import cetz.draw: *
+  let r = 3
+  let G = (0, 0)
+  let E = (r, 0)
+  let C = cetz.vector.rotate-z(E, 60deg)
+  let H = cetz.vector.lerp(G, E, 0.5)
+  let A = cetz.vector.lerp(G, E, 0-0.5)
+  let B = cetz.vector.lerp(G, E, 1+0.5)
+  let Flabel = cetz.vector.add(C, (0, r))
+  let CE = cetz.vector.sub(E, C)
+  let D = cetz.vector.rotate-z(CE, -18deg)
+  D = cetz.vector.add(C, D)
+  let tick = (-0.05, 0.1)
+
+  // lines
+  line(A, B)
+  line(G, E)
+  line(G, C)
+  line(E, C)
+  line(C, H)
+  circle(C, radius: r)
+  line(cetz.vector.add(D, tick), cetz.vector.sub(D, tick))
+
+  // labels
+  content(A, letters.at("A"), anchor: "south")
+  content(B, letters.at("B"), anchor: "south")
+  content(G, letters.at("G"), anchor: "north")
+  content(E, letters.at("E"), anchor: "north")
+  content(C, letters.at("C"), anchor: "south")
+  content(H, letters.at("H"), anchor: "north")
+  content(D, letters.at("D"), anchor: "north-west")
+  content(Flabel, letters.at("F"), anchor: "south")
 })
 
 #content-box[

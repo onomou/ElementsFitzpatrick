@@ -2,7 +2,28 @@
 #import "@preview/cetz:0.4.2"
 
 #let fig09(letters) = fig({
+  import cetz.draw: *
+  let A = (0, 0)
+  let B = (-2.2, -5)
+  let C = (2.2, -5)
+  let D = cetz.vector.lerp(A, B, 0.5)
+  let E = cetz.vector.lerp(A, C, 0.5)
+  let F = (0, -4.3)
   
+  // lines
+  line(A, B)
+  line(A, C)
+  line(D, E)
+  line(D, F)
+  line(E, F)
+
+  // labels
+  content(A, letters.at("A"), anchor: "south")
+  content(B, letters.at("B"), anchor: "south")
+  content(C, letters.at("C"), anchor: "south")
+  content(D, letters.at("D"), anchor: "east")
+  content(E, letters.at("E"), anchor: "west")
+  content(F, letters.at("F"), anchor: "north")
 })
 
 #content-box[
